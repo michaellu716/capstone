@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mideo</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+    <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <%= link_to 'Mideo Solutions', root_path, class: 'navbar-brand' %>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mr-auto mt-2 mt-md-0">
+        </ul>
+        <ul class="navbar-nav">
+          <% if user_signed_in? %>
+            <li class="nav-item">
+                <%= link_to 'Meetings', meetings_path, class: 'btn btn-secondary' %>&nbsp;
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'btn btn-danger' %>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to 'Sign In', new_user_session_path, class: 'btn btn-primary' %>&nbsp;
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-danger' %>&nbsp;
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+
+    <% if notice.present? %>
+      <p class="alert alert-info"><%= notice %></p>
+    <% end %>
+
+    <% if alert.present? %>
+         <p class="alert alert-danger"><%= alert %></p>
+    <% end %>
+
+    <!-- Error message if all fields are not filled out in new places form
+    <% if flash[:error].present? %>
+      <div class="col-10 offset-1 alert alert-danger">
+        <%= flash[:error].html_safe %>
+      </div>
+    <% end %>-->
+
+    <%= yield %>
+   
+    <div id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-9">
+              <b>Mideo Solutions LLC, All Rights Reserved &copy; 2019</b>
+            </div>
+          </div>
+    </div>
+  </div>
+</body>
+</html>
