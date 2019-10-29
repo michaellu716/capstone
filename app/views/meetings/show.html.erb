@@ -7,17 +7,12 @@
 
 <p>
   <strong>Start date:</strong>
-  <%= @meeting.start_date %>
+  <%= readable_time(@meeting.start_date_ %>
 </p>
 
 <p>
   <strong>End time:</strong>
   <%= @meeting.end_time %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @meeting.user %>
 </p>
 
 <%= link_to 'Edit', edit_meeting_path(@meeting) %> |
