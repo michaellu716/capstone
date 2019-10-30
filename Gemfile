@@ -39,6 +39,7 @@ gem 'redis', '~> 4.0'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise'
 gem 'simple_form'
+gem 'trix', "~> 0.9.9"
 gem "simple_calendar", "~> 2.0"
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
