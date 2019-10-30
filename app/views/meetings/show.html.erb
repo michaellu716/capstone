@@ -1,11 +1,9 @@
-<div class="max-w-lg my-10 m-auto">
+<div class="max-w-lg my-10 m-auto booyah-box">
   <div class="p-10 bg-white border border-grey-light rounded">
 
     <div class="flex flex-wrap justify-between items-center mb-5">
       <h1><%= @meeting.name %></h1>
-      <%= link_to "Cancel Meeting", meeting_path(@meeting), method: :delete, data: { confirm: "Are you sure you want to cancel? "}, class: "btn btn-destroy" %>
     </div>
-
     <div class="border p-6 bg-grey-lighter mb-5 flex items-center justify-between">
       <p class="border-2 py-3 px-4 border-indigo rounded-full text-sm text-indigo">
         Start time: <span class="font-bold"><%= readable_time(@meeting.start_time) %></span>
@@ -15,7 +13,7 @@
         End time: <span class="font-bold"><%= readable_time(@meeting.end_time) %></span>
       </p>
     </div>
-
+    <%= link_to "Cancel Meeting", meeting_path(@meeting), method: :delete, data: { confirm: "Are you sure you want to cancel? "}, class: "btn btn-destroy" %>
     <h4>Comments</h4>
     <hr class="border" />
 
