@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2019_10_29_200329) do
 
   create_table "meetings", force: :cascade do |t|
     t.string "name"
-    t.datetime "start_date"
+    t.datetime "start_time"
     t.datetime "end_time"
     t.bigint "user_id"
     t.datetime "created_at", null: false

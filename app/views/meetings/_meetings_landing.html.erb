@@ -30,7 +30,7 @@
               <%= link_to meeting.name, meeting, class: "link mr-4" %>
             </div>
             <div>
-              <%= readable_time(meeting.start_date) %> &ndash;
+              <%= readable_time(meeting.start_time) %> &ndash;
               <%= readable_time(meeting.end_time) %>
             </div>
           </div>
@@ -43,7 +43,7 @@
   <div id="calendar" class="tab-panel active">
     <h2>Meeting Calendar</h2>
     <div id="meeting-calendar">
-      <%= render "calendar", meetings: meetings  %>
+      <%= render "calendar", meetings: meetings  %> 
     </div>
   </div>
 </div>

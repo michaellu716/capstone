@@ -1,7 +1,7 @@
 <div class="container m-auto my-4">
   <% unless current_user.meetings.any? %>
     <%= render "meetings_not_found" %>
-    <% else %>
+  <% else %>
     <%= render "meetings_landing", meetings: @meetings %>
   <% end %>
 </div>
