@@ -43,7 +43,6 @@ gem 'trix', "~> 0.9.9"
 gem "font-awesome-rails"
 gem 'bootstrap-select-rails'
 gem "simple_calendar", "~> 2.0"
-gem 'tailwindcss', "~> 0.2.0"
 gem 'webpacker', '~> 4.x'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

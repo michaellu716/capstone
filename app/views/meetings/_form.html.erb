@@ -18,14 +18,14 @@
   </div>
   <div class="mb-6">
     <%= form.label :start_time, class: "label" %>
-    <div class="flex items-center justify-between max-w-md">
-      <%= form.datetime_select :start_time, { start_day: Date.today, start_year: Date.today.year, minute_step: 15 }, { class: "select py-2 px-2 mr-2" } %>
+    <div class="form-group">
+      <%= form.datetime_select :start_time, { start_day: Date.today, start_year: Date.today.year, minute_step: 15 }, { class: "select" } %>
     </div>
   </div>
   <div class="field">
     <%= form.label :end_time, class: "label" %>
-    <div class="flex items-center justify-between max-w-md">
-      <%= form.datetime_select :end_time, { start_day: Date.today, start_year: Date.today.year, minute_step: 15 }, { class: "select py-2 px-2 mr-2" } %>
+    <div class="form-group">
+      <%= form.datetime_select :end_time, { start_day: Date.today, start_year: Date.today.year, minute_step: 15 }, { class: "select" } %>
     </div>
   </div>
   <hr class="border" />
