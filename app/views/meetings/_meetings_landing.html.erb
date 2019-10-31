@@ -1,7 +1,7 @@
 <div class="panel panel-default">
 <nav class="bg-white mb-4 shadow rounded">
   <ul id="nav-tab" class="tabs nav nav-pills nav-tab">
-    <li class="active" data-tab="calendar">
+    <li class="activeLink" data-tab="calendar">
       <%= link_to "#calendar", class: "tab flex items-center mtg-link" do %>
          <i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;<title>calendar</title>
        Calendar
@@ -9,7 +9,7 @@
     </li>
 
      <li data-tab="all-meetings">
-      <%= link_to "#all-meetings", class: "tab flex items-center mtg-link" do %>
+      <%= link_to "#all-meetings", class: "tab flex items-center mtg-link", id: "meetings" do %>
          <i class="fa fa-coffee"></i>&nbsp;<title>coffee</title>
       All Meetings
       <% end %>
@@ -19,7 +19,7 @@
 </div>
 
 <div id="all-meetings" class="tab-panel">
-  <table class="table table-hover">
+  <table class="table table-hover all-meetings">
   <thead>
     <tr>
       <th scope="col">#</th>
