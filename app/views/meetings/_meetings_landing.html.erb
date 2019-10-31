@@ -14,10 +14,35 @@
       All Meetings
       <% end %>
     </li>
-
   </ul>
 </nav>
 </div>
+
+<div id="all-meetings" class="tab-panel">
+  <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Start Time</th>
+      <th scope="col">End Time</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% meetings.each do |meeting| %>
+    <tr>
+      <th scope="row"><%= meeting.id %></th>
+      <td><%= link_to meeting.name, meeting, class: "link mr-4" %></td>
+      <td><%= readable_time(meeting.start_time) %></td>
+      <td><%= readable_time(meeting.end_time) %></td>
+      <td><%= link_to "Cancel Meeting", meeting, method: :delete, data: { confirm: "Are you sure? There are no refunds." }, class: "btn btn-destroy ml-4" %></td>
+    </tr>
+  </tbody>
+  <% end %>
+</table>
+</div>
+
 
 <div class="bg-white p-10 border rounded booyah-box">
 <h2 class="mtg_cal_title">Meeting Calendar</h2>
