@@ -1,56 +1,99 @@
-<div class="panel panel-default">
-<nav class="bg-white mb-4 shadow rounded">
-  <ul id="nav-tab" class="tabs nav nav-pills nav-tab">
-    <li class="activeLink" data-tab="calendar">
-      <%= link_to "#calendar", class: "tab flex items-center mtg-link" do %>
-         <i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;<title>calendar</title>
-       Calendar
-      <% end %>
-    </li>
-
-     <li data-tab="all-meetings">
-      <%= link_to "#all-meetings", class: "tab flex items-center mtg-link", id: "meetings" do %>
-         <i class="fa fa-coffee"></i>&nbsp;<title>coffee</title>
-      All Meetings
-      <% end %>
-    </li>
+</br>
+<figure class="tabBlock">
+  <ul class="tabBlock-tabs">
+    <li class="tabBlock-tab is-active">Meetings</li>
+    <li class="tabBlock-tab">Calendar</li>
   </ul>
-</nav>
-</div>
-
-<div id="all-meetings" class="tab-panel">
-  <table class="table table-hover all-meetings">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Title</th>
-      <th scope="col">Start Time</th>
-      <th scope="col">End Time</th>
-      <th scope="col"></th>
-    </tr>
-  </thead>
-  <tbody>
-  <% meetings.each do |meeting| %>
-    <tr>
-      <th scope="row"><%= meeting.id %></th>
-      <td><%= link_to meeting.name, meeting, class: "link mr-4" %></td>
-      <td><%= readable_time(meeting.start_time) %></td>
-      <td><%= readable_time(meeting.end_time) %></td>
-      <td><%= link_to "Cancel Meeting", meeting, method: :delete, data: { confirm: "Are you sure? There are no refunds." }, class: "btn btn-destroy ml-4" %></td>
-    </tr>
-  </tbody>
-  <% end %>
-</table>
-</div>
-
-
-<div class="bg-white p-10 border rounded booyah-box">
-<h2 class="mtg_cal_title">Meeting Calendar</h2>
-  <div id="calendar" class="mtg_calendar tab-panel active">
-    <div id="meeting-calendar">
-      <%= render "calendar", meetings: meetings  %> 
+  <div class="tabBlock-content">
+    <div class="tabBlock-pane">
+    <table class="table table-hover all-meetings">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Title</th>
+        <th scope="col">Start Time</th>
+        <th scope="col">End Time</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+    <% meetings.each do |meeting| %>
+      <tr>
+        <th scope="row"><%= meeting.id %></th>
+        <td><%= link_to meeting.name, meeting, class: "link mr-4" %></td>
+        <td><%= readable_time(meeting.start_time) %></td>
+        <td><%= readable_time(meeting.end_time) %></td>
+        <td><%= link_to "Cancel Meeting", meeting, method: :delete, data: { confirm: "Are you sure? There are no refunds." }, class: "btn btn-destroy ml-4" %></td>
+      </tr>
+    </tbody>
+    <% end %>
+  </table>
+  <div class="col-md-12 d-flex justify-content-center">
+	    <%= will_paginate @meetings, previous_label: h("<"), next_label: h(">") %>
     </div>
+    </div>
+    <div class="tabBlock-pane">
+      <div class="bg-white p-10 border rounded booyah-box">
+      <h2 class="mtg_cal_title">Meeting Calendar</h2>
+        <div id="calendar" class="mtg_calendar tab-panel active">
+          <div id="meeting-calendar">
+            <%= render "calendar", meetings: meetings  %> 
+          </div>
+        </div>
+      </div>
+      </div>
   </div>
-</div>
+</figure>
+<script>
+var TabBlock = {
+  s: {
+    animLen: 200
+  },
+  
+  init: function() {
+    TabBlock.bindUIActions();
+    TabBlock.hideInactive();
+  },
+  
+  bindUIActions: function() {
+    $('.tabBlock-tabs').on('click', '.tabBlock-tab', function(){
+      TabBlock.switchTab($(this));
+    });
+  },
+  
+  hideInactive: function() {
+    var $tabBlocks = $('.tabBlock');
+    
+    $tabBlocks.each(function(i) {
+      var 
+        $tabBlock = $($tabBlocks[i]),
+        $panes = $tabBlock.find('.tabBlock-pane'),
+        $activeTab = $tabBlock.find('.tabBlock-tab.is-active');
+      
+      $panes.hide();
+      $($panes[$activeTab.index()]).show();
+    });
+  },
+  
+  switchTab: function($tab) {
+    var $context = $tab.closest('.tabBlock');
+    
+    if (!$tab.hasClass('is-active')) {
+      $tab.siblings().removeClass('is-active');
+      $tab.addClass('is-active');
+   
+      TabBlock.showPane($tab.index(), $context);
+    }
+   },
+  
+  showPane: function(i, $context) {
+    var $panes = $context.find('.tabBlock-pane');
+    $panes.slideUp(TabBlock.s.animLen);
+    $($panes[i]).slideDown(TabBlock.s.animLen);
+  }
+};
 
-
+$(function() {
+  TabBlock.init();
+});
+</script>
