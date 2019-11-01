@@ -6,12 +6,12 @@ class MeetingsController < ApplicationController
   # GET /meetings.json
   def index
     @meetings = current_user.meetings.page(params[:page]).per_page(8)
+    @calTabActive = (params[:tab] == "calendar")
   end
 
   # GET /meetings/1
   # GET /meetings/1.json
   def show
-    
   end
 
   # GET /meetings/new

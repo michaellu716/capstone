@@ -1,8 +1,8 @@
-</br>
+<br/>
 <figure class="tabBlock">
   <ul class="tabBlock-tabs">
-    <li class="tabBlock-tab is-active">Meetings</li>
-    <li class="tabBlock-tab">Calendar</li>
+    <li class="tabBlock-tab <%= @calTabActive ? '' : 'is-active' %>">Meetings</li>
+    <li class="tabBlock-tab <%= @calTabActive ? 'is-active' : '' %>">Calendar</li>
   </ul>
   <div class="tabBlock-content">
     <div class="tabBlock-pane">
