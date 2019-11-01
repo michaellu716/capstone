@@ -11,6 +11,9 @@ module ApplicationHelper
     def readable_dayofmonth(time)
         time.strftime("%d")
     end
+    def readable_endTime(time)
+        time.strftime("%I:%M%P")
+    end
     def readable_week(time)
         time.strftime("%A")
     end

@@ -1,16 +1,15 @@
-<h1>Update Meeting</h1>
+<div class="d-flex justify-content-center updateTitle"><h1>Update Meeting</h1></div>
 <div class="container">
 		<div class="row row-striped">
-			<div class="col-2 text-right">
-				<h1 class="display-4"><span class="badge badge-secondary"><%= readable_dayofmonth(@meeting.start_time) %></span></h1>
-				<h2><%= readable_month(@meeting.start_time) %></h2>
+			<div class="col-2 text-right mtg_update_separator">
+				<h1 class="display-4"><span class="badge-secondary"><%= readable_month(@meeting.start_time) %></span></h1>
+				<h2><%= readable_dayofmonth(@meeting.start_time) %></h2>
 			</div>
 			<div class="col-10">
 				<h3 class="text-uppercase"><strong><%= @meeting.name %></strong></h3>
 				<ul class="list-inline">
-					<li class="list-inline-item"><i class="fa fa-calendar-o" aria-hidden="true"></i><%= readable_week(@meeting.start_time) %></li>
-          <li class="list-inline-item"><i class="fa fa-clock-o" aria-hidden="true"></i>Start:<%= readable_time(@meeting.start_time) %></li> 
-          <li class="list-inline-item"><i class="fa fa-location-arrow" aria-hidden="true"></i> Cafe</li>
+					<li class="list-inline-item"><i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp;<%= readable_week(@meeting.start_time) %></li>
+          <li class="list-inline-item"><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;<%= readable_time(@meeting.start_time) %>-<%= readable_endTime(@meeting.end_time) %></li> 
         </ul>
         <h4>Comments</h4>
         <hr class="border" />
@@ -19,8 +18,8 @@
             <p class="text-sm text-grey-dark"><%= link_to "Login", new_user_session_path, class: "link" %> or <%= link_to "Sign up", new_user_regsitration_path, class: "link" %> to comment.</p>
           </div>
         <% end %>    
-        <p class="editbtn"><%= link_to "Edit", edit_meeting_path(@meeting), class: "btn btn-secondary" %></p>
-				<p> <%= link_to "Cancel Meeting", meeting_path(@meeting), method: :delete, data: { confirm: "Are you sure you want to cancel? "}, class: "btn btn-danger" %></p>
+        <p class="editbtn"><%= link_to "Edit", edit_meeting_path(@meeting), class: "btn btn-primary" %></p>
+				<p class="deletebtn"> <%= link_to "Cancel Meeting", meeting_path(@meeting), method: :delete, data: { confirm: "Are you sure you want to cancel? "}, class: "btn btn-danger" %></p>
 			</div>
 		</div>
 	</div>

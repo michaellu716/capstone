@@ -319,9 +319,12 @@ ol, ul {
 }
 
 .row-striped{
-  background-color: lightblue;
-  border-left: 4px #000000 solid;
+  background-color: #00b3ff;
   padding: 15px 0;
+  color:#fff;
+  border-radius: 29px 29px 29px 29px;
+  -moz-border-radius: 29px 29px 29px 29px;
+  -webkit-border-radius: 29px 29px 29px 29px;
 }
 .editbtn{
   float:left;
@@ -329,4 +332,16 @@ ol, ul {
 }
 .list-inline{
   margin-left:0px;
+}
+.mtg_update_separator{
+   border-right:1px solid #ffffff;
+} 
+.deletebtn{
+  float:right;
+}
+.updateTitle{
+  padding:15px;
+}
+.edit{
+  padding-top:10px;
 }
