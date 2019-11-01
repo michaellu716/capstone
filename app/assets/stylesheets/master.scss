@@ -215,19 +215,17 @@ input {
   align-items: center;
   justify-content: center;
 }
-
-
+.linkCal{
+  font-size:14px;
+}
 .group::after, .tabBlock-tabs::after {
   clear: both;
   content: "";
   display: table;
 }
-
 *, ::before, ::after {
   box-sizing: border-box;
 }
-
-
 @media screen and (min-width: 700px) {
   body {
     font-size: 137.5%;
@@ -318,4 +316,17 @@ ol, ul {
 
 .tabBlock-pane > :last-child {
   margin-bottom: 0;
+}
+
+.row-striped{
+  background-color: lightblue;
+  border-left: 4px #000000 solid;
+  padding: 15px 0;
+}
+.editbtn{
+  float:left;
+  padding-right:5px;
+}
+.list-inline{
+  margin-left:0px;
 }

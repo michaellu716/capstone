@@ -20,7 +20,7 @@
     <% meetings.each do |meeting| %>
       <tr>
         <th scope="row"><%= meeting.id %></th>
-        <td><%= link_to meeting.name, meeting, class: "link mr-4" %></td>
+        <td><%= link_to meeting.name, meeting, class: "mr-4" %></td>
         <td><%= readable_time(meeting.start_time) %></td>
         <td><%= readable_time(meeting.end_time) %></td>
         <td><%= link_to "Cancel Meeting", meeting, method: :delete, data: { confirm: "Are you sure? There are no refunds." }, class: "btn btn-destroy ml-4" %></td>
@@ -44,26 +44,23 @@
       </div>
   </div>
 </figure>
+<%= link_to "Schedule a Meeting", new_meeting_path, class: "btn btn-primary" %>
 <script>
 var TabBlock = {
   s: {
     animLen: 200
   },
-  
   init: function() {
     TabBlock.bindUIActions();
     TabBlock.hideInactive();
   },
-  
   bindUIActions: function() {
     $('.tabBlock-tabs').on('click', '.tabBlock-tab', function(){
       TabBlock.switchTab($(this));
     });
   },
-  
   hideInactive: function() {
     var $tabBlocks = $('.tabBlock');
-    
     $tabBlocks.each(function(i) {
       var 
         $tabBlock = $($tabBlocks[i]),
@@ -74,18 +71,15 @@ var TabBlock = {
       $($panes[$activeTab.index()]).show();
     });
   },
-  
   switchTab: function($tab) {
     var $context = $tab.closest('.tabBlock');
-    
     if (!$tab.hasClass('is-active')) {
       $tab.siblings().removeClass('is-active');
       $tab.addClass('is-active');
-   
+      
       TabBlock.showPane($tab.index(), $context);
     }
    },
-  
   showPane: function(i, $context) {
     var $panes = $context.find('.tabBlock-pane');
     $panes.slideUp(TabBlock.s.animLen);

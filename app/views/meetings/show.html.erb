@@ -1,27 +1,26 @@
-<div class="max-w-lg my-10 m-auto booyah-box">
-  <div class="p-10 bg-white border border-grey-light rounded">
-
-    <div class="flex flex-wrap justify-between items-center mb-5">
-      <h1><%= @meeting.name %></h1>
-    </div>
-    <div class="border p-6 bg-grey-lighter mb-5 flex items-center justify-between">
-      <p class="border-2 py-3 px-4 border-indigo rounded-full text-sm text-indigo">
-        Start time: <span class="font-bold"><%= readable_time(@meeting.start_time) %></span>
-      </p>
-      <div class="border-t-2 border-indigo-light border-dashed h-1 flex-1"></div>
-      <p class="border-2 py-3 px-4 border-indigo rounded-full text-sm text-indigo">
-        End time: <span class="font-bold"><%= readable_time(@meeting.end_time) %></span>
-      </p>
-    </div>
-    <%= link_to "Cancel Meeting", meeting_path(@meeting), method: :delete, data: { confirm: "Are you sure you want to cancel? "}, class: "btn btn-destroy" %>
-    <h4>Comments</h4>
-    <hr class="border" />
-
-    <% unless user_signed_in? %>
-      <div class="bg-grey-lighter rounded p-4 mt-4 text-center">
-        <p class="text-sm text-grey-dark"><%= link_to "Login", new_user_session_path, class: "link" %> or <%= link_to "Sign up", new_user_regsitration_path, class: "link" %> to comment.</p>
-      </div>
-      
-    <% end %>    
-  </div>
-</div>
+<h1>Update Meeting</h1>
+<div class="container">
+		<div class="row row-striped">
+			<div class="col-2 text-right">
+				<h1 class="display-4"><span class="badge badge-secondary"><%= readable_dayofmonth(@meeting.start_time) %></span></h1>
+				<h2><%= readable_month(@meeting.start_time) %></h2>
+			</div>
+			<div class="col-10">
+				<h3 class="text-uppercase"><strong><%= @meeting.name %></strong></h3>
+				<ul class="list-inline">
+					<li class="list-inline-item"><i class="fa fa-calendar-o" aria-hidden="true"></i><%= readable_week(@meeting.start_time) %></li>
+          <li class="list-inline-item"><i class="fa fa-clock-o" aria-hidden="true"></i>Start:<%= readable_time(@meeting.start_time) %></li> 
+          <li class="list-inline-item"><i class="fa fa-location-arrow" aria-hidden="true"></i> Cafe</li>
+        </ul>
+        <h4>Comments</h4>
+        <hr class="border" />
+        <% unless user_signed_in? %>
+          <div class="bg-grey-lighter rounded p-4 mt-4 text-center">
+            <p class="text-sm text-grey-dark"><%= link_to "Login", new_user_session_path, class: "link" %> or <%= link_to "Sign up", new_user_regsitration_path, class: "link" %> to comment.</p>
+          </div>
+        <% end %>    
+        <p class="editbtn"><%= link_to "Edit", edit_meeting_path(@meeting), class: "btn btn-secondary" %></p>
+				<p> <%= link_to "Cancel Meeting", meeting_path(@meeting), method: :delete, data: { confirm: "Are you sure you want to cancel? "}, class: "btn btn-danger" %></p>
+			</div>
+		</div>
+	</div>
