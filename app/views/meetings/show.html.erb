@@ -13,6 +13,9 @@
         </ul>
         <h4>Comments</h4>
         <hr class="border" />
+        <div class="text-center">
+          <p class="text-sm"><%= link_to ('<button class="btn btn-primary videobtn"><i class="fa fa-video-camera">Video Consultation</i></button>').html_safe, talking_stick.rooms_path, class: "video_link" %></p>
+        </div>
         <% unless user_signed_in? %>
           <div class="bg-grey-lighter rounded p-4 mt-4 text-center">
             <p class="text-sm text-grey-dark"><%= link_to "Login", new_user_session_path, class: "link" %> or <%= link_to "Sign up", new_user_regsitration_path, class: "link" %> to comment.</p>
@@ -23,3 +26,4 @@
 			</div>
 		</div>
 	</div>
+
