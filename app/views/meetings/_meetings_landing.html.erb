@@ -6,28 +6,22 @@
   </ul>
   <div class="tabBlock-content">
     <div class="tabBlock-pane">
-    <table class="table table-hover all-meetings">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Title</th>
-        <th scope="col">Start Time</th>
-        <th scope="col">End Time</th>
-        <th scope="col"></th>
-      </tr>
-    </thead>
-    <tbody>
-    <% meetings.each do |meeting| %>
-      <tr>
-        <th scope="row"><%= meeting.id %></th>
-        <td><%= link_to meeting.name, meeting, class: "mr-4" %></td>
-        <td><%= readable_time(meeting.start_time) %></td>
-        <td><%= readable_time(meeting.end_time) %></td>
-        <td><%= link_to "Cancel Meeting", meeting, method: :delete, data: { confirm: "Are you sure? There are no refunds." }, class: "btn btn-destroy ml-4" %></td>
-      </tr>
-    </tbody>
-    <% end %>
-  </table>
+    <div class="events-container">
+        <span class="events__title">Upcoming events this month</span>
+         <% meetings.each do |meeting| %>
+        <ul class="events__list">
+          <li class="events__item">
+            <div class="events__item--left">
+              <span class="events__name"><%= link_to meeting.name, meeting, class: "mr-4" %></span>
+              <span class="events__date"><%= readable_time(meeting.start_time) %></span>
+            </div>
+            <span class="events__tag"><%= readable_startTime(meeting.start_time) %></span>
+            <span class="events__tag"><%= readable_endTime(meeting.end_time) %></span>
+            <%= link_to "Cancel Meeting", meeting, method: :delete, data: { confirm: "Are you sure? There are no refunds." }, class: "btn btn-destroy ml-4" %>
+          </li>
+        </ul>
+        <% end %>
+    </div>
   <div class="col-md-12 d-flex justify-content-center">
 	    <%= will_paginate @meetings, previous_label: h("<"), next_label: h(">") %>
     </div>
@@ -91,3 +85,4 @@ $(function() {
   TabBlock.init();
 });
 </script>
+
