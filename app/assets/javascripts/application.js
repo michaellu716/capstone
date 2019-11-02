@@ -21,4 +21,5 @@
 //= require bootstrap-select
 //= require bootstrap/alert
 //= require bootstrap/dropdown
+//= require talking_stick/application
 //= require_tree .

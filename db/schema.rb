@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_29_200329) do
+ActiveRecord::Schema.define(version: 2019_11_02_133756) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,39 @@ ActiveRecord::Schema.define(version: 2019_10_29_200329) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_meetings_on_user_id"
+  end
+
+  create_table "talking_stick_participants", id: :serial, force: :cascade do |t|
+    t.string "name"
+    t.string "ip"
+    t.string "guid"
+    t.datetime "joined_at"
+    t.datetime "last_seen"
+    t.integer "room_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["guid"], name: "index_talking_stick_participants_on_guid"
+    t.index ["room_id"], name: "index_talking_stick_participants_on_room_id"
+  end
+
+  create_table "talking_stick_rooms", id: :serial, force: :cascade do |t|
+    t.string "name"
+    t.datetime "last_used"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "slug"
+  end
+
+  create_table "talking_stick_signals", id: :serial, force: :cascade do |t|
+    t.integer "room_id"
+    t.integer "sender_id"
+    t.integer "recipient_id"
+    t.string "signal_type"
+    t.text "data"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recipient_id"], name: "index_talking_stick_signals_on_recipient_id"
+    t.index ["sender_id"], name: "index_talking_stick_signals_on_sender_id"
   end
 
   create_table "users", force: :cascade do |t|
