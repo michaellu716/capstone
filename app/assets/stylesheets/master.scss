@@ -388,8 +388,8 @@ $calendar-button-color: #E9E8E8;
 //Font size variables
 $lg-font-size: 20px;
 $default-font-size: 14px;
-$sm-font-size: 12px;
-$xsm-font-size: 10px;
+$sm-font-size: 14px;
+$xsm-font-size: 14px;
 
 //Font weight variables
 $font-weight--bold: 700;
@@ -727,7 +727,7 @@ header {
     color: $white;
     font-size: $xsm-font-size;
     font-weight: $font-weight--semi-bold;
-    width: 60px;
+    width: 70px;
     margin-left: 16px;
     padding: 5px 2px;
     text-align: center;
@@ -769,6 +769,7 @@ header {
     display: inline-block;
   }
 }
-
-
+.mr-4{
+  font-size: 20px;
+}
 

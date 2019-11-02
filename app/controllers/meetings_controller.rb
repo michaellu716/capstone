@@ -59,7 +59,7 @@ class MeetingsController < ApplicationController
   def destroy
     @meeting.destroy
     respond_to do |format|
-      format.html { redirect_to meetings_url, notice: 'Meeting was successfully destroyed.' }
+      format.html { redirect_to meetings_url, notice: 'Meeting was successfully deleted.' }
       format.json { head :no_content }
     end
   end
