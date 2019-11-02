@@ -5,7 +5,7 @@ class MeetingsController < ApplicationController
   # GET /meetings
   # GET /meetings.json
   def index
-    @meetings = current_user.meetings.page(params[:page]).per_page(8)
+    @meetings = current_user.meetings.order('start_time').page(params[:page]).per_page(6)
     @calTabActive = (params[:tab] == "calendar")
   end
 
