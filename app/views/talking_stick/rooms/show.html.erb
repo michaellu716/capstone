@@ -1,3 +1,6 @@
+<div class="d-flex justify-content-center">
+    <span class="navbar-brand"><%= @room.name %></span>
+</div>
 <% content_for(:title) { "#{@room.name} Group Conversation" } %>
 <div class="container-fluid" role="main" id="talking-stick-room" data-room-name="<%= @room.name %>">
   <div class="row">
@@ -5,9 +8,6 @@
       <div class="row">
         <div class="col-xs-12">
           <div id="talking-stick-localvideo-container"></div>
-        </div>
-        <div class="col-xs-12">
-          <span class="navbar-brand"><%= @room.name %></span>
         </div>
       </div>
     </div>

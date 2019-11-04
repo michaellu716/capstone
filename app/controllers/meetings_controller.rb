@@ -6,6 +6,7 @@ class MeetingsController < ApplicationController
   # GET /meetings.json
   def index
     @meetings = current_user.meetings.order('start_time').page(params[:page]).per_page(6)
+    @allMeetings = Meeting.all
     @calTabActive = (params[:tab] == "calendar")
   end
 
@@ -28,7 +29,6 @@ class MeetingsController < ApplicationController
   def create
     @meeting = Meeting.new(meeting_params)
     @meeting.user_id = current_user.id
-
     respond_to do |format|
       if @meeting.save
         format.html { redirect_to @meeting, notice: 'Meeting was successfully created.' }
@@ -69,8 +69,6 @@ class MeetingsController < ApplicationController
     def set_meeting
       @meeting = Meeting.find(params[:id])
     end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
     def meeting_params
       params.require(:meeting).permit(:name, :start_time, :end_time, :user_id)
     end
